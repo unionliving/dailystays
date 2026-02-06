@@ -12,6 +12,7 @@ export default function FooterSection() {
           <Link href="/contact" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase  font-[GaretRegular]">Contact</p></Link>
           <Link href="/short-term-stay-mumbai" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase font-[GaretRegular]">Mumbai</p></Link>
           <Link href="/short-term-stay-pune" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase font-[GaretRegular]">Pune</p></Link>
+          <Link href="/short-term-stay-gurgaon" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase font-[GaretRegular]">Gurgaon</p></Link>
           <Link href="/blogs" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase font-[GaretRegular]">Blogs</p></Link>
         </div>
         <div className="mt-6">
