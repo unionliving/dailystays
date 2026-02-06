@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.daily.unionliving.in/
+
+# Sitemaps
+Sitemap: https://www.daily.unionliving.in/sitemap.xml

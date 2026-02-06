@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "QuicksandBold";
+  src: local("QuicksandBold"),
+    url("../webfonts/Quicksand-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "QuicksandMedium";
+  src: local("QuicksandMedium"),
+    url("../webfonts/Quicksand-Medium.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "MontserratRegular";
+  src: local("MontserratRegular"),
+    url("../webfonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "LexandMedium";
+  src: local("LexandMedium"),
+    url("../webfonts/LexendExa-Medium.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "LexandSemibold";
+  src: local("LexandSemibold"),
+    url("../webfonts/LexendExa-SemiBold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "GaretRegular";
+  src: local("GaretRegular"),
+    url("../webfonts/Garet-Book.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "HelveticaWorldRegular";
+  src: local("HelveticaWorldRegular"),
+    url("../webfonts/HelveticaWorld-Regular.ttf") format("truetype");
+  font-weight: bold;
+}
+
+/* Clamp multi-line excerpts without the Tailwind plugin. */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}

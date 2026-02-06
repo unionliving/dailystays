@@ -1,0 +1,30 @@
+.nmimsBannerBox{
+    background-image: url("../../asset/nmimscollege.png");
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
+.sndtBannerBox{
+    background-image: url("../../asset/sndt.png");
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
+.mithibaiBannerBox{
+    background-image: url("../../asset/mithibai.png");
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
+.sanghviBannerBox{
+    background-image: url("../../asset/djsanghvi.png");
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
+.nicmarBannerBox{
+    background-image: url("../../asset/nicmar.png");
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
