@@ -3,8 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import Image from "next/image";
-import Mahalaxmi from "../../assets/stays1.png";
-import Baner from "../../assets/stays3.png";
 import mumbai from "../../assets/home-mumbai.png";
 import pune from "../../assets/home-pune.png";
 
@@ -14,8 +12,8 @@ import Link from 'next/link';
 
 const Stays = () => {
   const slides = [
-    { id: 1, image: mumbai, title: "Mumbai", subtitle: "Mumbai", link:'/mumbai' },
-    { id: 2, image: pune, title: "Pune", subtitle: "Baner", link:'pune' },
+    { id: 1, image: mumbai, title: "Mumbai", subtitle: "Mumbai", link:'/short-term-stay-mumbai' },
+    { id: 2, image: pune, title: "Pune", subtitle: "Baner", link:'/short-term-stay-pune' },
   ];
 
   return (
@@ -54,7 +52,6 @@ const Stays = () => {
               autoplay: false,
             },
           }}
-          autoplay={{ delay: 3000 }}
           className="whats-on-swiper"
         >
           {slides.map((slide) => (
