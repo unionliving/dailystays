@@ -13,7 +13,7 @@ import banner2 from '../../assets/stays3.png';
 import banner3 from '../../assets/stays4.png';
 
 
-export default function HotelIntro({title, location, locationLink, desc, bannerImages,link}) {
+export default function HotelIntro({ title, location, locationLink, desc, bannerImages, link }) {
   const [guests, setGuests] = useState(1);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -83,7 +83,20 @@ export default function HotelIntro({title, location, locationLink, desc, bannerI
   <div className="space-y-4">
     <h1 className="text-3xl md:text-5xl font-[HelveticaWorldRegular] tracking-wider">{location}</h1>
     {/* <p className="text-lg text-gray-700">{location}</p> */}
-    <button className="text-sm underline font-[HelveticaWorldRegular] tracking-wider text-black">VIEW ON MAP</button>
+    {locationLink ? (
+      <a
+        href={locationLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sm underline font-[HelveticaWorldRegular] tracking-wider text-black"
+      >
+        VIEW ON MAP
+      </a>
+    ) : (
+      <button className="text-sm underline font-[HelveticaWorldRegular] tracking-wider text-black">
+        VIEW ON MAP
+      </button>
+    )}
 
     {/* <h2 className="font-semibold mt-6 text-xl">Varsity</h2> */}
     <p className="text-gray-700 lg:text-[1rem] text-[0.7rem] text-justify mt-2 font-[GaretRegular] leading-relaxed">{desc}</p>

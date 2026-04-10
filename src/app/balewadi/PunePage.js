@@ -25,7 +25,7 @@ import banner5 from "../../assets/Balewadi/banner5.webp";
 
 const BalewadiPage = () => {
   const bookingLink =
-    "https://live.ipms247.com/booking/book-rooms-hamletbyunionliving";
+    "https://live.ipms247.com/booking/book-rooms-otherbydailystays";
 
   const rooms = [
     {
@@ -48,6 +48,7 @@ const BalewadiPage = () => {
         title="Balewadi"
         bannerImages={bannerImages}
         location="Balewadi, Pune"
+        locationLink="https://maps.app.goo.gl/oeH5w6v8QWXDZKSc6"
         desc="Balewadi is one of Pune's fast-growing neighbourhoods, known for its strong road connectivity, proximity to business hubs, and easy access to dining, retail, and everyday essentials. This stay by Union Living brings the same short-term stay experience as our Pune properties, with fully furnished rooms, a comfortable residential setting, and the flexibility needed for work trips, city visits, and longer short stays."
       />
       <AboutAmenities />
