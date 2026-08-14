@@ -94,7 +94,7 @@ const PuneLocations = () => {
             </div>
           </div>
 
-          <div className="lg:w-1/2 w-full mt-4 lg:mt-0 lg:pl-10 h-[400px] lg:h-[700px]">
+          <div className="lg:w-1/2 w-full mt-4 lg:mt-0 lg:pl-10 h-[400px] lg:h-[400px]">
             <div className="w-full h-full">
               <iframe
                 src={location.mapEmbedUrl}

@@ -12,11 +12,10 @@ export default function FooterSection() {
           <Link href="/contact" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase  font-[GaretRegular]">Contact</p></Link>
           <Link href="/short-term-stay-mumbai" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase font-[GaretRegular]">Mumbai</p></Link>
           <Link href="/short-term-stay-pune" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase font-[GaretRegular]">Pune</p></Link>
-          <Link href="/short-term-stay-gurgaon" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase font-[GaretRegular]">Gurgaon</p></Link>
           <Link href="/blogs" > <p className="lg:text-[1.2rem] text-[0.8rem] uppercase font-[GaretRegular]">Blogs</p></Link>
         </div>
         <div className="mt-6">
-        <p className="text-gray-300 font-[GaretRegular] lg:text-left text-center text-[.7rem] lg:text-base">© The daily stays, Inc. 2025 All Rights Reserved.</p>
+        <p className="text-gray-300 font-[GaretRegular] lg:text-left text-center text-[.7rem] lg:text-base">© The daily stays, Inc. 2026 All Rights Reserved.</p>
         </div>
       </div>
       <div className="flex justify-center lg:justify-end flex-col">
@@ -32,10 +31,10 @@ export default function FooterSection() {
               
             </div>
         <div className="">
-          <p className="text-[0.6rem] lg:text-[1rem] mt-6 flex justify-center lg:justify-end  gap-3 ">
+          <div className="text-[0.6rem] lg:text-[1rem] mt-6 flex justify-center lg:justify-end  gap-3 ">
         <a href="tel:7021654226" className="text-white pr-3 font-[GaretRegular] border-r-[1px] border-white">7021654226 </a> 
         <p className="text-white font-[GaretRegular] text-[0.6rem] lg:text-[1rem]">thedailystays@unionliving.in</p>
-        </p>
+        </div>
         </div>
       </div>
     </footer>

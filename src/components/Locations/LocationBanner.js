@@ -1,5 +1,4 @@
 import React from 'react'
-import './LocationBanner.css'  // Parallax CSS
 
 const LocationBanner = ({ image, location, sublocation, desc }) => {
   return (
@@ -27,7 +26,7 @@ const LocationBanner = ({ image, location, sublocation, desc }) => {
 
           {/* Right Side */}
           <div>
-            <h3 className="font-[GaretRegular] tracking-wider text-[0.8rem] lg:text-[1.3rem] lg:mr-[120px] text-justify leading-relaxed">
+            <h3 className="font-[GaretRegular] tracking-wider text-[0.8rem] lg:text-[1rem] lg:mr-[120px] text-justify leading-relaxed">
            {desc}
             </h3>
           </div>

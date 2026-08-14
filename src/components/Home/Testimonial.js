@@ -92,21 +92,7 @@ export default function TestimonialsSection() {
 
           {/* Swiper Container with Fade Effects */}
           <div className="relative overflow-hidden">
-            {/* Left Fade Edge - Smaller on mobile */}
-            <div
-              className="absolute left-0 top-0 bottom-0 w-6 sm:w-12 md:w-16 lg:w-24 z-10 pointer-events-none"
-              style={{
-                background: "linear-gradient(to right, #f5f1eb, rgba(245, 241, 235, 0))",
-              }}
-            />
-
-            {/* Right Fade Edge - Smaller on mobile */}
-            <div
-              className="absolute right-0 top-0 bottom-0 w-6 sm:w-12 md:w-16 lg:w-24 z-10 pointer-events-none"
-              style={{
-                background: "linear-gradient(to left, #f5f1eb, rgba(245, 241, 235, 0))",
-              }}
-            />
+           
 
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
