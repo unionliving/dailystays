@@ -24,7 +24,7 @@ const PunePage = () => {
     },
   ];
 
-  const bannerImages = [img1, img2, img3, img4, img5, img6];
+  const bannerImages = [img1, img2, img3, img4, img5];
 
   return (
     <div>
