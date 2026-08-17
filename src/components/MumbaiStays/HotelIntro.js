@@ -1,19 +1,15 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { FiMinus, FiPlus, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useState, useRef } from 'react';
+import { FiMinus, FiPlus, FiChevronLeft, FiChevronRight, FiMapPin } from 'react-icons/fi';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Calendar from "react-calendar";
-import banner1 from '../../assets/stays1.png';
-import banner2 from '../../assets/stays3.png';
-import banner3 from '../../assets/stays4.png';
 
-
-export default function HotelIntro({ title, location, locationLink, desc, bannerImages, link }) {
+export default function HotelIntro({ title, location, locationLink, mapLink, desc, bannerImages, link }) {
   const [guests, setGuests] = useState(1);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -24,38 +20,38 @@ export default function HotelIntro({ title, location, locationLink, desc, banner
   const checkInRef = useRef(null);
   const checkOutRef = useRef(null);
 
-  const images = [banner1, banner2, banner3];
-
   const incrementGuests = () => setGuests(guests + 1);
   const decrementGuests = () => setGuests(guests > 1 ? guests - 1 : 1);
 
   return (
-    <div className="relative">
-      <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
-        {/* Top Section: Grid for Image (Left) and Booking (Right) */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-          
-          {/* Left: Title & Swiper Banner */}
-          <div className="w-full lg:w-2/3 flex flex-col space-y-6">
-            <div className="space-y-2">
-              <h1 className="text-3xl md:text-5xl font-[HelveticaWorldRegular] tracking-wider">{location}</h1>
-              {locationLink ? (
-                <a
-                  href={locationLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm underline font-[HelveticaWorldRegular] tracking-wider text-black"
-                >
-                  VIEW ON MAP
-                </a>
-              ) : (
-                <button className="text-sm underline font-[HelveticaWorldRegular] tracking-wider text-black">
-                  VIEW ON MAP
-                </button>
-              )}
-            </div>
+    <div className="relative w-full bg-white pb-16 pt-10 lg:pt-16">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        
+        {/* Header Title Section (Top) */}
+        <div className="mb-8 lg:mb-12 border-b border-gray-100 pb-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-[HelveticaWorldRegular] text-gray-900 tracking-tight leading-tight">
+            {title} <span className="text-gray-400 font-light block md:inline md:ml-4">{location}</span>
+          </h1>
+          <div className="flex flex-wrap items-center gap-6 mt-8">
+            <a 
+              href={mapLink || `https://maps.google.com/?q=${encodeURIComponent(location + " Union Living")}`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gray-500 hover:text-black transition-colors group"
+            >
+              <FiMapPin size={16} className="group-hover:animate-bounce" />
+              <span className="font-[GaretRegular] text-sm uppercase tracking-widest border-b border-transparent group-hover:border-black transition-colors">
+                View on Map
+              </span>
+            </a>
+          </div>
+        </div>
 
-            <div className="relative h-[300px] md:h-[500px] overflow-hidden rounded-2xl z-0 w-full">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start relative">
+          
+          {/* Left: Image Carousel (55%) */}
+          <div className="w-full lg:w-[55%] relative group rounded-2xl overflow-hidden shadow-sm">
+            <div className="relative w-full aspect-[4/3] lg:aspect-[1/1] xl:aspect-[4/3]">
               <Swiper
                 modules={[Navigation, Autoplay]}
                 navigation={{
@@ -73,122 +69,138 @@ export default function HotelIntro({ title, location, locationLink, desc, banner
                   disableOnInteraction: false,
                 }}
                 loop
-                className="h-full"
+                className="h-full w-full"
               >
                 {bannerImages.map((img, idx) => (
                   <SwiperSlide key={idx}>
                     <Image
                       src={img}
-                      alt="Banner"
+                      alt={`${title} Banner ${idx + 1}`}
                       fill
                       className="object-cover"
+                      priority={idx === 0}
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
 
-              {/* Custom Navigation Buttons at Bottom Left */}
-              <div className="absolute bottom-4 left-4 flex space-x-2 z-20">
-                <button ref={prevRef} className="bg-black bg-opacity-60 p-2 rounded hover:bg-opacity-80">
-                  <FiChevronLeft className="text-white" size={20} />
+              {/* Custom Navigation */}
+              <div className="absolute bottom-6 right-6 flex space-x-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button ref={prevRef} className="bg-white/90 backdrop-blur-md p-3 rounded-full hover:bg-white text-black transition-all shadow-md">
+                  <FiChevronLeft size={20} />
                 </button>
-                <button ref={nextRef} className="bg-black bg-opacity-60 p-2 rounded hover:bg-opacity-80">
-                  <FiChevronRight className="text-white" size={20} />
+                <button ref={nextRef} className="bg-white/90 backdrop-blur-md p-3 rounded-full hover:bg-white text-black transition-all shadow-md">
+                  <FiChevronRight size={20} />
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Right: Booking Box */}
-          <div className="w-full lg:w-1/3 z-10 flex justify-center lg:justify-end mt-8 lg:mt-[100px]">
-            <div className="w-full max-w-[400px] bg-white shadow-2xl rounded-2xl overflow-hidden border border-gray-200">
-              <div className="divide-y divide-gray-200">
+          {/* Right: Description & Booking Widget (45%) */}
+          <div className="w-full lg:w-[45%] flex flex-col space-y-12 lg:sticky lg:top-24 z-30">
+            
+            {/* Description */}
+            <div className="prose prose-lg max-w-none">
+              <p className="text-gray-600 text-sm md:text-base font-[GaretRegular] leading-relaxed text-justify">
+                {desc}
+              </p>
+            </div>
+
+            {/* Booking Widget */}
+            <div className="w-full bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-2xl border border-gray-100 p-6 md:p-8">
               
-                 <div className="p-8">
-                   <label className="block text-xs font-semibold mb-1">CHECK IN</label>
-                   <div className="space-y-2 flex flex-col items-start relative" ref={checkInRef}>
-                      
-                      <div onClick={() => setShowCheckIn(!showCheckIn)} className="cursor-pointer !pt-0">
-                          {checkInDate ? checkInDate.toDateString() : 'Select date'}
-                      </div>
-                      {showCheckIn && (
-                           <div className="fixed z-50 mt-2 bg-white rounded-lg shadow-lg border border-gray-200" style={{
-                             top: checkInRef.current ? checkInRef.current.getBoundingClientRect().bottom + 10 : 'auto',
-                             left: checkInRef.current ? checkInRef.current.getBoundingClientRect().left : 'auto'
-                           }}>
-                             <Calendar 
-                               onChange={(date) => { 
-                                 if (checkOutDate && date >= checkOutDate) {
-                                   alert('Check-in date must be before check-out date');
-                                   return;
-                                 }
-                                 setCheckInDate(date); 
-                                 setShowCheckIn(false); 
-                               }} 
-                               value={checkInDate}
-                               minDate={new Date()}
-                             />
-                           </div>
-                         )}
-                     </div>
-                </div>
+              <div className="mb-6">
+                <h3 className="text-xl font-[HelveticaWorldRegular] text-gray-900 mb-1">Reserve your stay</h3>
+              </div>
 
-                 <div className="p-8">
-                   <label className="block text-xs font-semibold mb-1">CHECK OUT</label>
-                   <div className="space-y-2 flex flex-col items-start relative" ref={checkOutRef}>
-                      
-                      <div onClick={() => setShowCheckOut(!showCheckOut)} className="cursor-pointer !pt-0">
-                         {checkOutDate ? checkOutDate.toDateString() : 'Select date'}
-                      </div>
-                      {showCheckOut && (
-                          <div className="fixed z-50 mt-2 bg-white rounded-lg shadow-lg border border-gray-200" style={{
-                            top: checkOutRef.current ? checkOutRef.current.getBoundingClientRect().bottom + 10 : 'auto',
-                            left: checkOutRef.current ? checkOutRef.current.getBoundingClientRect().left : 'auto'
-                          }}>
-                            <Calendar 
-                              onChange={(date) => { 
-                                if (checkInDate && date <= checkInDate) {
-                                  alert('Check-out date must be after check-in date');
-                                  return;
-                                }
-                                setCheckOutDate(date); 
-                                setShowCheckOut(false); 
-                              }} 
-                              value={checkOutDate}
-                              minDate={checkInDate ? new Date(checkInDate.getTime() + 24 * 60 * 60 * 1000) : new Date()}
-                            />
-                          </div>
-                        )}
+              <div className="rounded-xl border border-gray-200 overflow-hidden mb-6">
+                {/* Dates */}
+                <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-gray-200 border-b border-gray-200">
+                  
+                  {/* Check In */}
+                  <div className="w-full md:w-1/2 p-4 relative" ref={checkInRef}>
+                    <label className="block text-[0.65rem] tracking-widest font-bold text-gray-900 mb-1 uppercase">Check In</label>
+                    <div 
+                      onClick={() => setShowCheckIn(!showCheckIn)} 
+                      className="cursor-pointer text-sm text-gray-600 font-[GaretRegular]"
+                    >
+                        {checkInDate ? checkInDate.toLocaleDateString() : 'Add date'}
                     </div>
+                    {showCheckIn && (
+                        <div className="absolute z-50 top-full left-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 p-2">
+                          <Calendar 
+                            onChange={(date) => { 
+                              if (checkOutDate && date >= checkOutDate) {
+                                alert('Check-in date must be before check-out date');
+                                return;
+                              }
+                              setCheckInDate(date); 
+                              setShowCheckIn(false); 
+                            }} 
+                            value={checkInDate}
+                            minDate={new Date()}
+                            className="border-0 font-[GaretRegular]"
+                          />
+                        </div>
+                    )}
+                  </div>
+
+                  {/* Check Out */}
+                  <div className="w-full md:w-1/2 p-4 relative" ref={checkOutRef}>
+                    <label className="block text-[0.65rem] tracking-widest font-bold text-gray-900 mb-1 uppercase">Check Out</label>
+                    <div 
+                      onClick={() => setShowCheckOut(!showCheckOut)} 
+                      className="cursor-pointer text-sm text-gray-600 font-[GaretRegular]"
+                    >
+                       {checkOutDate ? checkOutDate.toLocaleDateString() : 'Add date'}
+                    </div>
+                    {showCheckOut && (
+                        <div className="absolute z-50 top-full right-0 md:left-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 p-2">
+                          <Calendar 
+                            onChange={(date) => { 
+                              if (checkInDate && date <= checkInDate) {
+                                alert('Check-out date must be after check-in date');
+                                return;
+                              }
+                              setCheckOutDate(date); 
+                              setShowCheckOut(false); 
+                            }} 
+                            value={checkOutDate}
+                            minDate={checkInDate ? new Date(checkInDate.getTime() + 24 * 60 * 60 * 1000) : new Date()}
+                            className="border-0 font-[GaretRegular]"
+                          />
+                        </div>
+                    )}
+                  </div>
                 </div>
 
-                <div className="p-8 flex items-center justify-between">
-                  <span className="text-xs font-semibold">GUESTS</span>
+                {/* Guests */}
+                <div className="p-4 flex items-center justify-between bg-gray-50/50">
+                  <div className="flex flex-col">
+                    <span className="text-[0.65rem] tracking-widest font-bold text-gray-900 mb-1 uppercase">Guests</span>
+                    <span className="text-sm text-gray-600 font-[GaretRegular]">Guests</span>
+                  </div>
                   <div className="flex items-center space-x-4">
-                    <button onClick={decrementGuests} className="p-2 rounded">
-                      <FiMinus size={16} />
+                    <button onClick={decrementGuests} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-black transition-colors">
+                      <FiMinus size={14} className="text-gray-600" />
                     </button>
-                    <span className="text-base">{guests}</span>
-                    <button onClick={incrementGuests} className="p-2 rounded">
-                      <FiPlus size={16} />
+                    <span className="text-base font-medium w-4 text-center">{guests}</span>
+                    <button onClick={incrementGuests} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-black transition-colors">
+                      <FiPlus size={14} className="text-gray-600" />
                     </button>
                   </div>
                 </div>
               </div>
 
-             <a href={link}>
-               <button className="w-full bg-black hover:bg-gray-800 rounded-b-xl text-white py-6 text-sm tracking-wider uppercase">
-                SEARCH
-               </button>
-             </a>
+              <a href={link} className="block w-full">
+                <button className="w-full bg-black hover:bg-gray-800 text-white py-4 rounded-xl text-sm tracking-widest uppercase font-medium transition-colors shadow-md hover:shadow-xl">
+                  Check Availability
+                </button>
+              </a>
+              
             </div>
           </div>
 
-        </div>
-
-        {/* Bottom Section: Description Full Width */}
-        <div className="mt-8 lg:mt-12 w-full">
-          <p className="text-gray-700 lg:text-[1rem] text-[0.7rem] text-justify font-[GaretRegular] leading-relaxed">{desc}</p>
         </div>
       </div>
     </div>

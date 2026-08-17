@@ -125,7 +125,7 @@ const MumbaiPages = () => {
     <div>
     <NavbarTwo />
     
-    <HotelIntro   title="Southside" location='Mahalaxmi, Mumbai'  bannerImages={bannerImages} desc="Southside by Union Living is an elevated living experience designed for modern professionals who seek both style and substance in the heart of the city. Offering fully furnished, thoughtfully designed residences with flexible leasing options, Southside combines the ease of serviced living with the warmth of a well-curated home. From minimalist interiors and functional layouts to curated communal spaces and seamless support, every detail is crafted for comfort, connection, and quiet sophistication. Whether for a season or something more permanent, Southside offers a place to live on your terms—without compromise" />
+    <HotelIntro   title="Downtown" location='Mahalaxmi, Mumbai'  bannerImages={bannerImages} desc="Downtown by Union Living is an elevated living experience designed for modern professionals who seek both style and substance in the heart of the city. Offering fully furnished, thoughtfully designed residences with flexible leasing options, Downtown combines the ease of serviced living with the warmth of a well-curated home. From minimalist interiors and functional layouts to curated communal spaces and seamless support, every detail is crafted for comfort, connection, and quiet sophistication. Whether for a season or something more permanent, Downtown offers a place to live on your terms—without compromise" />
     <AboutAmenities />
     <RoomTypes link="https://live.ipms247.com/booking/book-rooms-southsidebyunionliving" rooms={rooms} />
    
