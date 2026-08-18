@@ -3,24 +3,24 @@
 import React from 'react';
 import { FiCheck } from 'react-icons/fi';
 
-export default function AboutAmenities() {
-  const privileges = [
+export default function AboutAmenities({ 
+  privileges = [
     "Contactless Check-In",
     "24/7 Customer Support",
     "Professionally Cleaned",
     "Free High-Speed WiFi",
     "24-Hour Security",
     "Fresh Premium Towels"
-  ];
-
-  const neighbourhood = [
+  ],
+  neighbourhood = [
     "IT Access",
     "Coworking Zones",
     "Expressway Link",
     "Premium Gyms",
     "Nature Trails",
     "Retail Convenience"
-  ];
+  ]
+}) {
 
   return (
     <div className="w-full bg-white border-t border-gray-100">

@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div>
         <NavbarTwo />
-        <div className=''>
+        <div>
         <HomeBanner />
         <FeaturesSection  /> 
         {/* <About /> */}

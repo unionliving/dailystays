@@ -32,7 +32,7 @@ const LocationBanner = ({ image, location, sublocation, desc }) => {
 
           {/* Right Side: Description */}
           <div className="lg:pl-8">
-            <p className="max-w-xl text-sm lg:text-base text-gray-200 leading-relaxed font-[GaretRegular] text-left">
+            <p className="max-w-xl text-sm lg:text-base text-gray-200 leading-relaxed font-[GaretRegular] text-justify">
               {desc}
             </p>
           </div>

@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { LuChevronDown } from "react-icons/lu"
+import { FiPlus, FiMinus } from "react-icons/fi"
 
 export default function FAQSection() {
-  const [openItems, setOpenItems] = useState(new Set())
+  const [openItems, setOpenItems] = useState(new Set([1]))
 
   const faqs = [
     {
@@ -23,7 +23,7 @@ export default function FAQSection() {
       id: 3,
       question: "How do companies register The Daily Stays as an official vendor?",
       answer:
-        "Simply email us at 📩 thedailystays@gmail.com expressing your interest. Our team will guide you through the vendor onboarding process, including sharing our property portfolio, rate cards, billing details, and formal documentation.",
+        "Simply email us at thedailystays@gmail.com expressing your interest. Our team will guide you through the vendor onboarding process, including sharing our property portfolio, rate cards, billing details, and formal documentation.",
     },
     {
       id: 4,
@@ -68,39 +68,45 @@ export default function FAQSection() {
   }
 
   return (
-    <section className="bg-white py-8 lg:py-16 px-6 md:py-24 md:px-12 lg:px-16">
-      <div className="mx-auto max-w-7xl">
+    <section className="bg-white py-20 lg:py-32 px-6 md:px-12 lg:px-16 border-b border-gray-100">
+      <div className="mx-auto max-w-[1000px]">
         {/* Header */}
-        <div className=" mb-4 lg:mb-12">
-          <h2 className="text-3xl md:text-4xl font-[HelveticaWorldRegular] tracking-wider font-light text-gray-900">FAQs</h2>
+        <div className="mb-16 lg:mb-24 flex flex-col items-center text-center">
+          <span className="text-[0.65rem] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-4 block">Information</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-[HelveticaWorldRegular] tracking-tight text-gray-900 mb-6">
+            Frequently Asked Questions
+          </h2>
+          <div className="w-12 h-px bg-black"></div>
         </div>
 
         {/* FAQ Items */}
-        <div className="space-y-0">
-          {faqs.map((faq, index) => (
-            <div key={faq.id} className="border-b border-gray-200">
+        <div className="space-y-0 border-t border-gray-200">
+          {faqs.map((faq) => (
+            <div key={faq.id} className="border-b border-gray-200 group">
               <button
                 onClick={() => toggleItem(faq.id)}
-                className="w-full py-6  flex items-center justify-between text-left transition-colors duration-200  "
+                className="w-full py-8 flex items-center justify-between text-left transition-colors duration-200"
                 aria-expanded={openItems.has(faq.id)}
                 aria-controls={`faq-answer-${faq.id}`}
               >
-                <span className="text-[.9rem] md:text-xl font-[HelveticaWorldRegular] tracking-wider text-gray-900 pr-8 leading-relaxed">{faq.question}</span>
-                <LuChevronDown
-                  className={`w-5 h-5 text-gray-600 flex-shrink-0 transition-transform duration-200 ${
-                    openItems.has(faq.id) ? "rotate-180" : ""
-                  }`}
-                />
+                <span className={`text-lg md:text-xl font-[HelveticaWorldRegular] tracking-tight pr-8 transition-colors ${openItems.has(faq.id) ? 'text-black' : 'text-gray-600 group-hover:text-black'}`}>
+                  {faq.question}
+                </span>
+                <div className={`w-8 h-8 rounded-full border flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${openItems.has(faq.id) ? 'border-black bg-black text-white' : 'border-gray-200 text-gray-400 group-hover:border-black group-hover:text-black'}`}>
+                  {openItems.has(faq.id) ? <FiMinus size={14} /> : <FiPlus size={14} />}
+                </div>
               </button>
 
               {/* Answer */}
               <div
                 id={`faq-answer-${faq.id}`}
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openItems.has(faq.id) ? "max-h-96 opacity-100 pb-6" : "max-h-0 opacity-0"
+                  openItems.has(faq.id) ? "max-h-96 opacity-100 pb-8" : "max-h-0 opacity-0"
                 }`}
               >
-                <div className="text-gray-600 font-[GaretRegular] text-[0.7rem] lg:text-[1rem] leading-relaxed pr-8">{faq.answer}</div>
+                <div className="text-gray-500 font-[GaretRegular] text-sm md:text-base leading-relaxed pr-8 lg:pr-24">
+                  {faq.answer}
+                </div>
               </div>
             </div>
           ))}

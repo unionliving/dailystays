@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination, Autoplay } from "swiper/modules"
-import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 
 // Import Swiper styles
 import "swiper/css"
@@ -13,13 +13,12 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       id: 0,
-      quote:
-        "Stayed at Varsity for a month during a work trip and it felt like home from day one.",
+      quote: "Stayed at Varsity for a month during a work trip and it felt like home from day one.",
       name: "Niraj",
       location: "Pune",
       bgColor: "bg-[#ffeebf]",
       textColor: "text-black",
-      borderRadius: "rounded-tl-[60px]", // top-left corner
+      borderRadius: "rounded-tl-[60px]",
     },
     {
       id: 1,
@@ -28,16 +27,16 @@ export default function TestimonialsSection() {
       location: "Baner",
       bgColor: "bg-[#fadcb9]",
       textColor: "text-black",
-      borderRadius: "rounded-tr-[60px]", // top-right corner
+      borderRadius: "rounded-tr-[60px]",
     },
     {
       id: 2,
-      quote: "I booked a apartment while house-hunting in Pune. Would highly recommended to anyone.",
+      quote: "I booked an apartment while house-hunting in Pune. Would highly recommend to anyone.",
       name: "Priya",
       location: "Santacruz",
       bgColor: "bg-[#0f4865]",
-     textColor: "text-white",
-      borderRadius: "rounded-bl-[60px]", // bottom-left corner
+      textColor: "text-white",
+      borderRadius: "rounded-bl-[60px]",
     },
     {
       id: 3,
@@ -46,61 +45,56 @@ export default function TestimonialsSection() {
       location: "Mahalaxmi",
       bgColor: "bg-[#156d51]",
       textColor: "text-white",
-      borderRadius: "rounded-br-[60px]", // bottom-right corner
+      borderRadius: "rounded-br-[60px]",
     },
     {
       id: 4,
       quote: "A perfect place for short-term stays near the city. We stayed here during my convocation week.",
-      name: "Akash",
-      location: "Mahalaxmi",
+      name: "Ananya",
+      location: "Mumbai",
       bgColor: "bg-[#eaece2]",
       textColor: "text-black",
-      borderRadius: "rounded-br-[60px]", // bottom-right corner
+      borderRadius: "rounded-br-[60px]",
     },
-
   ]
 
   return (
-    <section className="bg-[#f5f1eb] py-12 px-4 sm:py-16 sm:px-6 md:py-20 md:px-8 lg:py-24 lg:px-12 xl:px-16">
-      <div className="mx-auto max-w-7xl">
+    <section className="bg-white py-20 lg:py-32 px-6 md:px-12 lg:px-16 border-b border-gray-100">
+      <div className="mx-auto max-w-[1400px]">
         {/* Header */}
-        <div className="mb-12 sm:mb-16 max-w-full">
-          <h2 className="mb-6 text-3xl font-[HelveticaWorldRegular] tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-gray-900">
+        <div className="mb-16 lg:mb-24 flex flex-col items-center text-center">
+          <span className="text-[0.65rem] uppercase tracking-[0.2em] text-gray-400 mb-6 block">Guest Experiences</span>
+          <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-[HelveticaWorldRegular] tracking-tight text-gray-900 mb-6">
             Every stay has a story
           </h2>
-          <p className="text-lg font-[HelveticaWorldRegular]  text-gray-700 leading-relaxed max-w-2xl">
-            But don't just take our word for it — see what our guests have to say.
-          </p>
+          <div className="w-12 h-px bg-black"></div>
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="relative">
-          {/* Custom Navigation Buttons - Hidden on mobile */}
+        <div className="relative group">
+          {/* Custom Navigation Buttons */}
           <button
-            className="swiper-button-prev-custom hidden lg:block absolute left-0 top-1/2 z-20 -translate-y-1/2 -translate-x-4 rounded-full bg-white p-3 shadow-lg hover:shadow-xl transition-shadow duration-200"
+            className="swiper-button-prev-custom hidden md:flex absolute left-0 top-1/2 z-20 -translate-y-1/2 -translate-x-6 lg:-translate-x-12 w-12 h-12 items-center justify-center rounded-full bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300"
             aria-label="Previous testimonial"
           >
-            <LuChevronLeft className="w-6 h-6 text-gray-600" />
+            <FiChevronLeft className="w-5 h-5 text-gray-600" />
           </button>
 
           <button
-            className="swiper-button-next-custom hidden lg:block absolute right-0 top-1/2 z-20 -translate-y-1/2 translate-x-4 rounded-full bg-white p-3 shadow-lg hover:shadow-xl transition-shadow duration-200"
+            className="swiper-button-next-custom hidden md:flex absolute right-0 top-1/2 z-20 -translate-y-1/2 translate-x-6 lg:translate-x-12 w-12 h-12 items-center justify-center rounded-full bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300"
             aria-label="Next testimonial"
           >
-            <LuChevronRight className="w-6 h-6 text-gray-600" />
+            <FiChevronRight className="w-5 h-5 text-gray-600" />
           </button>
 
-          {/* Swiper Container with Fade Effects */}
+          {/* Swiper Container */}
           <div className="relative overflow-hidden">
-           
-
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={60}
-              slidesPerView={1.1}
-              centeredSlides={false}
+              spaceBetween={30}
+              slidesPerView={1}
               loop={true}
-              speed={600}
+              speed={800}
               autoplay={{
                 delay: 4000,
                 disableOnInteraction: false,
@@ -114,51 +108,27 @@ export default function TestimonialsSection() {
                 clickable: true,
               }}
               breakpoints={{
-                320: {
-                  slidesPerView: 1.1,
-                  spaceBetween: 16,
-                  centeredSlides: false,
-                },
-                480: {
-                  slidesPerView: 1.2,
-                  spaceBetween: 20,
-                  centeredSlides: false,
-                },
-                640: {
-                  slidesPerView: 1.5,
-                  spaceBetween: 30,
-                  centeredSlides: false,
-                },
-                768: {
-                  slidesPerView: 2.2,
-                  spaceBetween: 40,
-                  centeredSlides: false,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 40,
-                  centeredSlides: true,
-                },
+                640: { slidesPerView: 2, spaceBetween: 30 },
+                1024: { slidesPerView: 3, spaceBetween: 40 },
               }}
-              className="testimonials-swiper !px-2"
+              className="!pb-16"
             >
               {testimonials.map((testimonial) => (
                 <SwiperSlide key={testimonial.id}>
                   <div
-                    className={`${testimonial.bgColor}  ${testimonial.borderRadius} p-6 sm:p-8 min-h-[250px] sm:min-h-[280px] md:min-h-[280px] flex flex-col justify-between`}
+                    className={`${testimonial.bgColor} ${testimonial.borderRadius} p-8 lg:p-10 h-full min-h-[300px] flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300`}
                   >
-                    <blockquote className={`text-sm leading-6 font-[GaretRegular] ${testimonial.textColor} flex-grow mb-6`}>
-                    "{testimonial.quote}"
+                    <blockquote className={`text-sm lg:text-base leading-relaxed font-[GaretRegular] ${testimonial.textColor} mb-8`}>
+                      "{testimonial.quote}"
                     </blockquote>
                     <div>
-                      <div className={`font-semibold font-[HelveticaWorldRegular] tracking-tighter ${testimonial.textColor} text-lg`}>
+                      <div className={`font-[HelveticaWorldRegular] tracking-tight ${testimonial.textColor} text-lg mb-1`}>
                         {testimonial.name}
                       </div>
-                      <div className={`font-[GaretRegular] tracking-tighter ${testimonial.textColor}`}>
+                      <div className={`font-[GaretRegular] tracking-widest uppercase text-[0.65rem] ${testimonial.textColor} opacity-80`}>
                         {testimonial.location}
                       </div>
                     </div>
-
                   </div>
                 </SwiperSlide>
               ))}
@@ -166,44 +136,25 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Custom Pagination Dots */}
-          <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2"></div>
+          <div className="swiper-pagination-custom flex justify-center space-x-3 absolute bottom-0 left-0 right-0 z-10"></div>
         </div>
       </div>
 
-      <style jsx>{`
-        .testimonials-swiper .swiper-slide {
-          opacity: 0.7;
-          transition: opacity 0.3s ease;
-        }
-        
-        .testimonials-swiper .swiper-slide-active {
-          opacity: 1;
-        }
-        
-        .testimonials-swiper .swiper-slide-prev,
-        .testimonials-swiper .swiper-slide-next {
-          opacity: 0.85;
-        }
-        
-        @media (min-width: 768px) {
-          .testimonials-swiper .swiper-slide {
-            opacity: 1;
-          }
-        }
-        
+      <style jsx global>{`
         .swiper-pagination-custom .swiper-pagination-bullet {
-          width: 12px;
-          height: 12px;
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
-          background-color: #9ca3af;
+          background-color: #d1d5db;
           opacity: 1;
           cursor: pointer;
-          transition: background-color 0.2s ease;
-          margin: 0 4px;
+          transition: all 0.3s ease;
+          display: inline-block;
         }
         
         .swiper-pagination-custom .swiper-pagination-bullet-active {
-          background-color: #1f2937;
+          background-color: #000;
+          transform: scale(1.2);
         }
       `}</style>
     </section>
