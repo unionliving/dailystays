@@ -41,7 +41,7 @@ const puneLocations = [
     roomTypes: ["Studio Rooms"],
   },
   {
-    title: "Wakad, Pune",
+    title: "Daily Stays @ Wakad, Pune",
     image: WakadCover,
     mapUrl: "https://maps.google.com/maps?q=Wakad,+Pune",
     href: "/wakad",

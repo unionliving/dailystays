@@ -52,7 +52,7 @@ const WakadPage = () => {
 
       <HotelIntro
         link={bookingLink}
-        title="Wakad"
+        title="Daily Stays @ Wakad"
         bannerImages={bannerImages}
         location="Wakad, Pune"
         desc="Wakad is one of Pune's most sought-after neighbourhoods, known for its proximity to the Hinjawadi IT hub, seamless connectivity via the Mumbai-Pune Expressway, and a thriving mix of cafes, malls, and everyday conveniences. This stay by Union Living brings the same short-term stay experience as our other Pune properties, with fully furnished rooms, a comfortable residential setting, and the flexibility needed for work trips, city visits, and longer short stays."

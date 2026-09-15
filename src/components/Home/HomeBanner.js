@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { IoChevronDown, IoRemove, IoAdd } from "react-icons/io5";
+import { IoChevronDown, IoRemove, IoAdd, IoChevronBack } from "react-icons/io5";
 import Calendar from "react-calendar";
 import Image from "next/image";
 import BannerOne from "../../assets/pcBanner1.webp";
@@ -27,7 +27,7 @@ const destinationsByCity = [
       { name: "X90 - Baner", link: "/x90" },
       { name: "Koregaon Park", link: "/koregaonpark" },
       { name: "Balewadi", link: "/balewadi" },
-      { name: "Wakad", link: "/wakad" },
+      { name: "Daily Stays @ Wakad", link: "/wakad" },
       { name: "Other - Pune", link: "/other-pune" },
     ],
   },
@@ -37,6 +37,7 @@ const HomeBanner = () => {
   const { guests, setGuests, checkInDate, setCheckInDate, checkOutDate, setCheckOutDate } = useBooking();
   const [selectedDestination, setSelectedDestination] = useState("Where to next");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedCity, setSelectedCity] = useState(null);
   const [showCheckIn, setShowCheckIn] = useState(false);
   const [showCheckOut, setShowCheckOut] = useState(false);
   const [property, setProperty] = useState({})
@@ -48,6 +49,7 @@ const HomeBanner = () => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setShowDropdown(false);
+        setSelectedCity(null);
       }
       if (checkInRef.current && !checkInRef.current.contains(e.target)) {
         setShowCheckIn(false);
@@ -66,6 +68,7 @@ const HomeBanner = () => {
     setSelectedDestination(property.name);
     setProperty(property);
     setShowDropdown(false);
+    setSelectedCity(null);
   };
 
   return (
@@ -131,22 +134,44 @@ const HomeBanner = () => {
               </div>
               {showDropdown && (
                 <div className="absolute top-full left-0 mt-2 w-full lg:w-[120%] bg-white shadow-xl rounded-xl border border-gray-100 overflow-hidden z-50 max-h-96 overflow-y-auto">
-                  {destinationsByCity.map((group) => (
-                    <div key={group.city}>
-                      <div className="px-6 pt-4 pb-2 bg-gray-50/80 sticky top-0">
-                        <span className="text-[0.65rem] font-[HelveticaWorldRegular] text-gray-400 uppercase tracking-[0.15em]">{group.city}</span>
+                  {!selectedCity ? (
+                    <>
+                      <div className="px-6 pt-4 pb-2">
+                        <span className="text-[0.65rem] font-[HelveticaWorldRegular] text-gray-400 uppercase tracking-[0.15em]">Choose a city</span>
                       </div>
-                      {group.properties.map((property, i) => (
+                      {destinationsByCity.map((group) => (
                         <div
-                          key={i}
-                          className="px-6 py-3 hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-50 last:border-b-0"
-                          onClick={(e) => { e.stopPropagation(); handleDestinationSelect(property); }}
+                          key={group.city}
+                          className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-50 last:border-b-0 flex items-center justify-between"
+                          onClick={(e) => { e.stopPropagation(); setSelectedCity(group.city); }}
                         >
-                          <span className="text-sm font-[GaretRegular] text-gray-800">{property.name}</span>
+                          <span className="text-sm font-[GaretRegular] text-gray-800">{group.city}</span>
+                          <span className="text-xs text-gray-400">{group.properties.length} {group.properties.length === 1 ? 'property' : 'properties'}</span>
                         </div>
                       ))}
-                    </div>
-                  ))}
+                    </>
+                  ) : (
+                    <>
+                      <div
+                        className="px-6 pt-4 pb-2 flex items-center gap-1 cursor-pointer text-gray-500 hover:text-black transition-colors"
+                        onClick={(e) => { e.stopPropagation(); setSelectedCity(null); }}
+                      >
+                        <IoChevronBack className="w-3.5 h-3.5" />
+                        <span className="text-[0.65rem] font-[HelveticaWorldRegular] uppercase tracking-[0.15em]">{selectedCity}</span>
+                      </div>
+                      {destinationsByCity
+                        .find((group) => group.city === selectedCity)
+                        .properties.map((property, i) => (
+                          <div
+                            key={i}
+                            className="px-6 py-3 hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-50 last:border-b-0"
+                            onClick={(e) => { e.stopPropagation(); handleDestinationSelect(property); }}
+                          >
+                            <span className="text-sm font-[GaretRegular] text-gray-800">{property.name}</span>
+                          </div>
+                        ))}
+                    </>
+                  )}
                 </div>
               )}
             </div>
