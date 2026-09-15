@@ -10,6 +10,7 @@ import BannerOne from "../../assets/pcBanner1.webp";
 import "swiper/css";
 import "react-calendar/dist/Calendar.css";
 import Link from "next/link";
+import { useBooking } from "@/context/BookingContext";
 
 const destinations = [
   {
@@ -35,11 +36,9 @@ const destinations = [
 ];
 
 const HomeBanner = () => {
-  const [guests, setGuests] = useState(1);
+  const { guests, setGuests, checkInDate, setCheckInDate, checkOutDate, setCheckOutDate } = useBooking();
   const [selectedDestination, setSelectedDestination] = useState("Where to next");
   const [showDropdown, setShowDropdown] = useState(false);
-  const [checkInDate, setCheckInDate] = useState(null);
-  const [checkOutDate, setCheckOutDate] = useState(null);
   const [showCheckIn, setShowCheckIn] = useState(false);
   const [showCheckOut, setShowCheckOut] = useState(false);
   const [property, setProperty] = useState({})
@@ -123,11 +122,11 @@ const HomeBanner = () => {
 
       {/* Booking Form Below Banner */}
       <div className="w-full bg-white relative z-20 px-6 lg:px-12 pt-8 pb-12 lg:pb-16 -mt-8">
-        <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 overflow-hidden max-w-6xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:h-24">
          
             {/* Destination */}
-            <div className="flex-1 px-6 py-4 lg:py-0 flex flex-col justify-center relative border-b lg:border-b-0 lg:border-r border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer" ref={dropdownRef} onClick={() => setShowDropdown(!showDropdown)}>
+            <div className="flex-1 px-6 py-4 lg:py-0 flex flex-col justify-center relative border-b lg:border-b-0 lg:border-r border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer rounded-t-2xl lg:rounded-t-none lg:rounded-l-2xl" ref={dropdownRef} onClick={() => setShowDropdown(!showDropdown)}>
               <label className="text-[0.65rem] font-[HelveticaWorldRegular] text-gray-500 uppercase tracking-[0.15em] mb-1 cursor-pointer">Destination</label>
               <div className="flex items-center justify-between">
                 <span className="text-sm lg:text-base font-[GaretRegular] text-gray-900 truncate font-medium">{selectedDestination}</span>
@@ -196,11 +195,11 @@ const HomeBanner = () => {
             </div>
 
             {/* Search Button */}
-            <div className="lg:w-[15%]">
-              <Link href={property.link ? property.link : '/'} className="block w-full h-full">   
+            <div className="lg:w-[15%] rounded-b-2xl lg:rounded-b-none lg:rounded-r-2xl overflow-hidden">
+              <Link href={property.link ? property.link : '/'} className="block w-full h-full">
                 <button className="w-full h-full bg-black text-white hover:bg-gray-800 font-[GaretRegular] py-5 lg:py-0 transition-colors duration-300 text-[0.75rem] uppercase tracking-[0.2em] flex items-center justify-center font-medium">
                   Search
-                </button> 
+                </button>
               </Link>
             </div>
             

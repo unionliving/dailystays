@@ -5,6 +5,7 @@ import Link from "next/link";
 import BanerCover from "../../assets/hamletcover.png";
 import KoregaonParkCover from "../../assets/koregaonparkcover.png";
 import BalewadiCover from "../../assets/Balewadi/banner1.webp";
+import WakadCover from "../../assets/Wakad/1.webp";
 
 const x90Cover = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/cover.webp";
 
@@ -37,6 +38,13 @@ const puneLocations = [
     image: x90Cover,
     mapUrl: "https://maps.google.com/maps?q=X90+Premium+Studios,+Pune",
     href: "/x90",
+    roomTypes: ["Studio Rooms"],
+  },
+  {
+    title: "Wakad, Pune",
+    image: WakadCover,
+    mapUrl: "https://maps.google.com/maps?q=Wakad,+Pune",
+    href: "/wakad",
     roomTypes: ["Studio Rooms"],
   },
   {

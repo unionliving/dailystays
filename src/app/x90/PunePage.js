@@ -33,15 +33,15 @@ const PunePage = () => {
   return (
     <div>
       <NavbarTwo />
-      <HotelIntro 
-        link="" 
-        title="X90" 
+      <HotelIntro
+        link="https://live.ipms247.com/booking/book-rooms-x90studioapartments"
+        title="X90"
         bannerImages={bannerImages} 
         location='Baner, Pune' 
         desc="Discover the perfect fusion of comfort, style, and community at X90, our coliving space in the heart of Baner. Designed for students and working professionals, X90 offers modern amenities, thoughtfully curated spaces, and a vibrant social environment — all in one prime location. Whether you're looking for convenience, connection, or a lifestyle upgrade, X90 makes it effortlessly possible." 
       />
       <AboutAmenities />
-      <RoomTypes link="https://live.ipms247.com/booking/book-rooms-x90byunionliving" rooms={rooms} />
+      <RoomTypes link="https://live.ipms247.com/booking/book-rooms-x90studioapartments" rooms={rooms} />
       <FooterSection />
     </div>
   )

@@ -8,8 +8,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useBooking } from '@/context/BookingContext';
 
 export default function RoomTypes({ rooms, link }) {
+  const { buildBookingUrl } = useBooking();
   return (
     <div className="w-full bg-white border-t border-gray-100">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 lg:py-32">
@@ -67,16 +69,18 @@ export default function RoomTypes({ rooms, link }) {
                   </Swiper>
 
                   {/* Minimalist Navigation */}
-                  <div className="absolute bottom-4 right-4 flex space-x-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
                     <button
                       ref={prevRef}
-                      className="bg-white/90 backdrop-blur p-2.5 rounded-full hover:bg-white text-black shadow-md transition-all"
+                      aria-label="Previous photo"
+                      className="bg-white/80 backdrop-blur p-2.5 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 active:scale-95"
                     >
                       <FiChevronLeft size={16} />
                     </button>
                     <button
                       ref={nextRef}
-                      className="bg-white/90 backdrop-blur p-2.5 rounded-full hover:bg-white text-black shadow-md transition-all"
+                      aria-label="Next photo"
+                      className="bg-white/80 backdrop-blur p-2.5 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 active:scale-95"
                     >
                       <FiChevronRight size={16} />
                     </button>
@@ -122,8 +126,8 @@ export default function RoomTypes({ rooms, link }) {
                     )}
                   </div>
 
-                  <a 
-                    href={link} 
+                  <a
+                    href={buildBookingUrl(link)}
                     className="inline-flex items-center gap-3 text-black group/btn w-max"
                   >
                     <span className="text-xs tracking-widest uppercase font-semibold border-b border-black pb-0.5 group-hover/btn:border-gray-400 transition-colors">

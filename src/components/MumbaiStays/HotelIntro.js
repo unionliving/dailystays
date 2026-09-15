@@ -4,17 +4,18 @@ import { useState, useRef } from 'react';
 import { FiMinus, FiPlus, FiChevronLeft, FiChevronRight, FiMapPin } from 'react-icons/fi';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 import Calendar from "react-calendar";
+import { useBooking } from "@/context/BookingContext";
 
 export default function HotelIntro({ title, location, locationLink, mapLink, desc, bannerImages, link }) {
-  const [guests, setGuests] = useState(1);
+  const { checkInDate, setCheckInDate, checkOutDate, setCheckOutDate, guests, setGuests, buildBookingUrl } = useBooking();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  const [checkInDate, setCheckInDate] = useState(null);
-  const [checkOutDate, setCheckOutDate] = useState(null);
   const [showCheckIn, setShowCheckIn] = useState(false);
   const [showCheckOut, setShowCheckOut] = useState(false);
   const checkInRef = useRef(null);
@@ -53,7 +54,10 @@ export default function HotelIntro({ title, location, locationLink, mapLink, des
           <div className="w-full lg:w-[55%] relative group rounded-2xl overflow-hidden shadow-sm">
             <div className="relative w-full aspect-[4/3] lg:aspect-[1/1] xl:aspect-[4/3]">
               <Swiper
-                modules={[Navigation, Autoplay]}
+                modules={[Navigation, Autoplay, EffectFade, Pagination]}
+                effect="fade"
+                fadeEffect={{ crossFade: true }}
+                speed={1000}
                 navigation={{
                   prevEl: prevRef.current,
                   nextEl: nextRef.current,
@@ -65,11 +69,12 @@ export default function HotelIntro({ title, location, locationLink, mapLink, des
                   swiper.navigation.update();
                 }}
                 autoplay={{
-                  delay: 4000,
+                  delay: 3200,
                   disableOnInteraction: false,
                 }}
+                pagination={{ clickable: true }}
                 loop
-                className="h-full w-full"
+                className="h-full w-full banner-swiper"
               >
                 {bannerImages.map((img, idx) => (
                   <SwiperSlide key={idx}>
@@ -85,14 +90,45 @@ export default function HotelIntro({ title, location, locationLink, mapLink, des
               </Swiper>
 
               {/* Custom Navigation */}
-              <div className="absolute bottom-6 right-6 flex space-x-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button ref={prevRef} className="bg-white/90 backdrop-blur-md p-3 rounded-full hover:bg-white text-black transition-all shadow-md">
+              <div className="absolute bottom-6 right-6 flex space-x-2 z-20">
+                <button
+                  ref={prevRef}
+                  aria-label="Previous photo"
+                  className="bg-white/80 backdrop-blur-md p-3 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 hover:shadow-lg active:scale-95"
+                >
                   <FiChevronLeft size={20} />
                 </button>
-                <button ref={nextRef} className="bg-white/90 backdrop-blur-md p-3 rounded-full hover:bg-white text-black transition-all shadow-md">
+                <button
+                  ref={nextRef}
+                  aria-label="Next photo"
+                  className="bg-white/80 backdrop-blur-md p-3 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 hover:shadow-lg active:scale-95"
+                >
                   <FiChevronRight size={20} />
                 </button>
               </div>
+
+              <style jsx global>{`
+                .banner-swiper .swiper-pagination {
+                  bottom: 24px !important;
+                  left: 24px !important;
+                  width: auto !important;
+                  display: flex;
+                  gap: 6px;
+                }
+                .banner-swiper .swiper-pagination-bullet {
+                  width: 8px;
+                  height: 8px;
+                  background: rgba(255, 255, 255, 0.6);
+                  opacity: 1;
+                  margin: 0 !important;
+                  transition: all 0.25s ease;
+                }
+                .banner-swiper .swiper-pagination-bullet-active {
+                  background: #fff;
+                  width: 22px;
+                  border-radius: 9999px;
+                }
+              `}</style>
             </div>
           </div>
 
@@ -113,7 +149,7 @@ export default function HotelIntro({ title, location, locationLink, mapLink, des
                 <h3 className="text-xl font-[HelveticaWorldRegular] text-gray-900 mb-1">Reserve your stay</h3>
               </div>
 
-              <div className="rounded-xl border border-gray-200 overflow-hidden mb-6">
+              <div className="rounded-xl border border-gray-200 mb-6">
                 {/* Dates */}
                 <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-gray-200 border-b border-gray-200">
                   
@@ -175,7 +211,7 @@ export default function HotelIntro({ title, location, locationLink, mapLink, des
                 </div>
 
                 {/* Guests */}
-                <div className="p-4 flex items-center justify-between bg-gray-50/50">
+                <div className="p-4 flex items-center justify-between bg-gray-50/50 rounded-b-xl">
                   <div className="flex flex-col">
                     <span className="text-[0.65rem] tracking-widest font-bold text-gray-900 mb-1 uppercase">Guests</span>
                     <span className="text-sm text-gray-600 font-[GaretRegular]">Guests</span>
@@ -192,7 +228,7 @@ export default function HotelIntro({ title, location, locationLink, mapLink, des
                 </div>
               </div>
 
-              <a href={link} className="block w-full">
+              <a href={buildBookingUrl(link)} className="block w-full">
                 <button className="w-full bg-black hover:bg-gray-800 text-white py-4 rounded-xl text-sm tracking-widest uppercase font-medium transition-colors shadow-md hover:shadow-xl">
                   Check Availability
                 </button>

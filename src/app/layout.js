@@ -3,6 +3,7 @@ import "./globals.css";
 import Hotjar from "@hotjar/browser";
 import Script from "next/script";
 import { FaWhatsapp } from 'react-icons/fa';
+import { BookingProvider } from "@/context/BookingContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -100,11 +101,11 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       <noscript>
-          
+
         </noscript>
-     
-        {children}
-        
+
+        <BookingProvider>{children}</BookingProvider>
+
         {/* Floating WhatsApp Icon - Global */}
         <div className="fixed bottom-6 right-6 z-50">
           <a 
