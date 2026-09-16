@@ -7,7 +7,7 @@ import KoregaonParkCover from "../../assets/koregaonparkcover.png";
 import BalewadiCover from "../../assets/Balewadi/banner1.webp";
 import WakadCover from "../../assets/Wakad/1.webp";
 
-const x90Cover = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/cover.webp";
+const x90Cover = "/images/x90/x90-11.jpg";
 
 import PuneCover from "../../assets/pune.webp";
 

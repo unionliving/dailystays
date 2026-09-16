@@ -5,17 +5,17 @@ import AboutAmenities from '@/components/PuneStays/AboutAmenities'
 import RoomTypes from '@/components/PuneStays/RoomTypes'
 import React from 'react'
 
-const img1 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-1.webp";
-const img2 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-2.webp";
-const img3 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-3.webp";
-const img4 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-4.webp";
-const img5 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-5.webp";
-const img6 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-6.webp";
-const img7 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-7.webp";
+const img1 = "/images/x90/x90-1.jpg";
+const img2 = "/images/x90/x90-2.jpg";
+const img3 = "/images/x90/x90-3.jpg";
+const img4 = "/images/x90/x90-4.jpg";
+const img5 = "/images/x90/x90-5.jpg";
+const img6 = "/images/x90/x90-6.jpg";
+const img7 = "/images/x90/x90-7.jpg";
 
-const bannerOne = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-8.webp";
-const bannerTwo = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-9.webp";
-const bannerThree = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/x90/x90-10.webp";
+const bannerOne = "/images/x90/x90-8.jpg";
+const bannerTwo = "/images/x90/x90-9.jpg";
+const bannerThree = "/images/x90/x90-10.jpg";
 
 const PunePage = () => {
   const rooms = [
