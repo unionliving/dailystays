@@ -41,7 +41,7 @@ const MumbaiPages = () => {
     <div>
     <NavbarTwo />
     
-    <HotelIntro link="https://live.ipms247.com/booking/book-rooms-varsitybyunionliving" title="Union @BKC" bannerImages={bannerImages} location='BKC, Mumbai' desc="Union @BKC by Union Living is a modern residential concept crafted for students and young professionals who value flexibility, design, and a sense of belonging. Offering fully furnished, move-in-ready spaces with flexible stay options, Union @BKC blends the comforts of private living with the energy of a vibrant community. Thoughtfully designed rooms, curated common areas, and seamless services create an elevated living experience—whether you’re staying for a semester, a few months, or longer. At Union @BKC, you’re not just renting a space—you’re joining a lifestyle" />
+    <HotelIntro link="https://live.ipms247.com/booking/book-rooms-unionatbkc" title="Union @BKC" bannerImages={bannerImages} location='BKC, Mumbai' desc="Union @BKC by Union Living is a modern residential concept crafted for students and young professionals who value flexibility, design, and a sense of belonging. Offering fully furnished, move-in-ready spaces with flexible stay options, Union @BKC blends the comforts of private living with the energy of a vibrant community. Thoughtfully designed rooms, curated common areas, and seamless services create an elevated living experience—whether you’re staying for a semester, a few months, or longer. At Union @BKC, you’re not just renting a space—you’re joining a lifestyle" />
     <AboutAmenities 
       privileges={[
         "Contactless Check-In",
@@ -60,7 +60,7 @@ const MumbaiPages = () => {
         "Juhu Beach"
       ]}
     />
-    <RoomTypes link="https://live.ipms247.com/booking/book-rooms-varsitybyunionliving"  rooms={rooms}/>
+    <RoomTypes link="https://live.ipms247.com/booking/book-rooms-unionatbkc"  rooms={rooms}/>
    
     <FooterSection />
   

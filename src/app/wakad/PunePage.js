@@ -28,8 +28,7 @@ import img20 from "../../assets/Wakad/20.webp";
 import img21 from "../../assets/Wakad/21.webp";
 
 const WakadPage = () => {
-  // TODO: replace with the real ipms247 booking link for Wakad
-  const bookingLink = "https://live.ipms247.com/booking/book-rooms-wakadbydailystays";
+  const bookingLink = "https://live.ipms247.com/booking/book-rooms-dailystayswakad";
 
   const rooms = [
     {
