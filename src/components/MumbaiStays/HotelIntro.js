@@ -4,9 +4,8 @@ import { useState, useRef } from 'react';
 import { FiMinus, FiPlus, FiChevronLeft, FiChevronRight, FiMapPin } from 'react-icons/fi';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, EffectFade, Pagination } from 'swiper/modules';
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import Calendar from "react-calendar";
@@ -14,8 +13,7 @@ import { useBooking } from "@/context/BookingContext";
 
 export default function HotelIntro({ title, location, locationLink, mapLink, desc, bannerImages, link }) {
   const { checkInDate, setCheckInDate, checkOutDate, setCheckOutDate, guests, setGuests, buildBookingUrl } = useBooking();
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const swiperRef = useRef(null);
   const [showCheckIn, setShowCheckIn] = useState(false);
   const [showCheckOut, setShowCheckOut] = useState(false);
   const checkInRef = useRef(null);
@@ -54,20 +52,11 @@ export default function HotelIntro({ title, location, locationLink, mapLink, des
           <div className="w-full lg:w-[55%] relative group rounded-2xl overflow-hidden shadow-sm">
             <div className="relative w-full aspect-[4/3] lg:aspect-[1/1] xl:aspect-[4/3]">
               <Swiper
-                modules={[Navigation, Autoplay, EffectFade, Pagination]}
+                modules={[Autoplay, EffectFade, Pagination]}
                 effect="fade"
                 fadeEffect={{ crossFade: true }}
                 speed={1000}
-                navigation={{
-                  prevEl: prevRef.current,
-                  nextEl: nextRef.current,
-                }}
-                onInit={(swiper) => {
-                  swiper.params.navigation.prevEl = prevRef.current;
-                  swiper.params.navigation.nextEl = nextRef.current;
-                  swiper.navigation.init();
-                  swiper.navigation.update();
-                }}
+                onSwiper={(swiper) => { swiperRef.current = swiper; }}
                 autoplay={{
                   delay: 3200,
                   disableOnInteraction: false,
@@ -92,14 +81,16 @@ export default function HotelIntro({ title, location, locationLink, mapLink, des
               {/* Custom Navigation */}
               <div className="absolute bottom-6 right-6 flex space-x-2 z-20">
                 <button
-                  ref={prevRef}
+                  type="button"
+                  onClick={() => swiperRef.current?.slidePrev()}
                   aria-label="Previous photo"
                   className="bg-white/80 backdrop-blur-md p-3 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 hover:shadow-lg active:scale-95"
                 >
                   <FiChevronLeft size={20} />
                 </button>
                 <button
-                  ref={nextRef}
+                  type="button"
+                  onClick={() => swiperRef.current?.slideNext()}
                   aria-label="Next photo"
                   className="bg-white/80 backdrop-blur-md p-3 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 hover:shadow-lg active:scale-95"
                 >

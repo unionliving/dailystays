@@ -3,35 +3,24 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, EffectFade } from 'swiper/modules';
+import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { useBooking } from '@/context/BookingContext';
 
 function RoomImageSlider({ room }) {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const swiperRef = useRef(null);
 
   return (
     <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-50 mb-6 rounded-2xl shadow-sm">
       <Swiper
-        modules={[Navigation, Autoplay, EffectFade]}
+        modules={[Autoplay, EffectFade]}
         effect="fade"
         autoplay={{ delay: 4000, disableOnInteraction: false }}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
         loop
         speed={1500}
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-        }}
+        onSwiper={(swiper) => { swiperRef.current = swiper; }}
         className="h-full w-full rounded-2xl"
       >
         {room.images.map((src, index) => (
@@ -49,14 +38,16 @@ function RoomImageSlider({ room }) {
       {/* Minimalist Navigation */}
       <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
         <button
-          ref={prevRef}
+          type="button"
+          onClick={() => swiperRef.current?.slidePrev()}
           aria-label="Previous photo"
           className="bg-white/80 backdrop-blur p-2.5 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 active:scale-95"
         >
           <FiChevronLeft size={16} />
         </button>
         <button
-          ref={nextRef}
+          type="button"
+          onClick={() => swiperRef.current?.slideNext()}
           aria-label="Next photo"
           className="bg-white/80 backdrop-blur p-2.5 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 active:scale-95"
         >
