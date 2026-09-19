@@ -10,6 +10,63 @@ import 'swiper/css/effect-fade';
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { useBooking } from '@/context/BookingContext';
 
+function RoomImageSlider({ room }) {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  return (
+    <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-50 mb-6 rounded-2xl shadow-sm">
+      <Swiper
+        modules={[Navigation, Autoplay, EffectFade]}
+        effect="fade"
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        loop
+        speed={1500}
+        onInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }}
+        className="h-full w-full rounded-2xl"
+      >
+        {room.images.map((src, index) => (
+          <SwiperSlide key={index}>
+            <Image
+              src={src}
+              alt={room.title}
+              fill
+              className="object-cover rounded-2xl group-hover:scale-105 transition-transform duration-1000 ease-out"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* Minimalist Navigation */}
+      <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
+        <button
+          ref={prevRef}
+          aria-label="Previous photo"
+          className="bg-white/80 backdrop-blur p-2.5 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 active:scale-95"
+        >
+          <FiChevronLeft size={16} />
+        </button>
+        <button
+          ref={nextRef}
+          aria-label="Next photo"
+          className="bg-white/80 backdrop-blur p-2.5 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 active:scale-95"
+        >
+          <FiChevronRight size={16} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function RoomTypes({ rooms, link }) {
   const { buildBookingUrl } = useBooking();
   return (
@@ -28,64 +85,13 @@ export default function RoomTypes({ rooms, link }) {
         {/* Premium 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
           {rooms.map((room, idx) => {
-            const prevRef = useRef(null);
-            const nextRef = useRef(null);
-
             return (
               <div
                 key={idx}
                 className="group flex flex-col"
               >
                 {/* Image Slider */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-50 mb-6 rounded-2xl shadow-sm">
-                  <Swiper
-                    modules={[Navigation, Autoplay, EffectFade]}
-                    effect="fade"
-                    autoplay={{ delay: 4000, disableOnInteraction: false }}
-                    navigation={{
-                      prevEl: prevRef.current,
-                      nextEl: nextRef.current,
-                    }}
-                    loop
-                    speed={1500}
-                    onInit={(swiper) => {
-                      swiper.params.navigation.prevEl = prevRef.current;
-                      swiper.params.navigation.nextEl = nextRef.current;
-                      swiper.navigation.init();
-                      swiper.navigation.update();
-                    }}
-                    className="h-full w-full rounded-2xl"
-                  >
-                    {room.images.map((src, index) => (
-                      <SwiperSlide key={index}>
-                        <Image
-                          src={src}
-                          alt={room.title}
-                          fill
-                          className="object-cover rounded-2xl group-hover:scale-105 transition-transform duration-1000 ease-out"
-                        />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-
-                  {/* Minimalist Navigation */}
-                  <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
-                    <button
-                      ref={prevRef}
-                      aria-label="Previous photo"
-                      className="bg-white/80 backdrop-blur p-2.5 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 active:scale-95"
-                    >
-                      <FiChevronLeft size={16} />
-                    </button>
-                    <button
-                      ref={nextRef}
-                      aria-label="Next photo"
-                      className="bg-white/80 backdrop-blur p-2.5 rounded-full text-black shadow-md transition-all duration-200 hover:bg-white hover:scale-110 active:scale-95"
-                    >
-                      <FiChevronRight size={16} />
-                    </button>
-                  </div>
-                </div>
+                <RoomImageSlider room={room} />
 
                 {/* Details */}
                 <div className="flex flex-col px-2">

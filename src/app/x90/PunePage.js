@@ -15,7 +15,6 @@ const img7 = "/images/x90/x90-7.jpg";
 
 const bannerOne = "/images/x90/x90-8.jpg";
 const bannerTwo = "/images/x90/x90-9.jpg";
-const bannerThree = "/images/x90/x90-10.jpg";
 
 const PunePage = () => {
   const rooms = [
@@ -28,7 +27,7 @@ const PunePage = () => {
     },
   ];
 
-  const bannerImages = [bannerOne, bannerTwo, bannerThree];
+  const bannerImages = [bannerOne, bannerTwo];
 
   return (
     <div>
