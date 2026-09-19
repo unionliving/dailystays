@@ -6,7 +6,6 @@ import React from 'react'
 
 const img11 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-2.webp";
 const img12 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-3.webp";
-const img13 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-4.webp";
 const img14 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-5.webp";
 const img16 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-6.webp";
 const img17 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-7.webp";
@@ -25,7 +24,7 @@ const MumbaiPages = () => {
           guests: 'Upto 6 Guests',
           bedroom: '2 Bedroom ',
           bathroom: '2 Bathroom',
-          images: ["https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-4.webp","https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-6.webp","https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-5.webp",],
+          images: ["https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-6.webp","https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/bkc/bkc-5.webp",],
         },
        {
           title: '1 BHK Apartments',
@@ -36,7 +35,7 @@ const MumbaiPages = () => {
         },
         
       ];
-      const bannerImages=[img11, img12, img13]
+      const bannerImages=[img11, img12, img14]
   return (
     <div>
     <NavbarTwo />
