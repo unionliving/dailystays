@@ -14,6 +14,8 @@ const img6 = "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/other
 
 
 const PunePage = () => {
+  const bookingLink = "https://live.ipms247.com/booking/book-rooms-otherbydailystays";
+
   const rooms = [
     {
       title: 'Studio Rooms',
@@ -29,15 +31,16 @@ const PunePage = () => {
   return (
     <div>
       <NavbarTwo />
-      <HotelIntro 
-        link="https://maps.app.goo.gl/rMQeg3RU1adYQkdi6" 
-        title="Other Serviced Residences" 
-        bannerImages={bannerImages} 
-        location='Balewadi, Pune' 
-        desc="Discover the perfect fusion of comfort, style, and community at Other Serviced Residences, our coliving space in the heart of Balewadi. Designed for students and working professionals, Other offers modern amenities, thoughtfully curated spaces, and a vibrant social environment — all in one prime location. Whether you're looking for convenience, connection, or a lifestyle upgrade, Other makes it effortlessly possible." 
+      <HotelIntro
+        link={bookingLink}
+        title="Daily Stays @ Other"
+        bannerImages={bannerImages}
+        location='Balewadi, Pune'
+        locationLink="https://maps.app.goo.gl/rMQeg3RU1adYQkdi6"
+        desc="Discover the perfect fusion of comfort, style, and community at Other Serviced Residences, our coliving space in the heart of Balewadi. Designed for students and working professionals, Other offers modern amenities, thoughtfully curated spaces, and a vibrant social environment — all in one prime location. Whether you're looking for convenience, connection, or a lifestyle upgrade, Other makes it effortlessly possible."
       />
       <AboutAmenities />
-      <RoomTypes link="https://live.ipms247.com/booking/book-rooms-otherbyunionliving" rooms={rooms} />
+      <RoomTypes link={bookingLink} rooms={rooms} />
       <FooterSection />
     </div>
   )

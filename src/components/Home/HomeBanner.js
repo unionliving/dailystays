@@ -26,9 +26,8 @@ const destinationsByCity = [
       { name: "Hamlet - Baner", link: "/hamlet" },
       { name: "X90 - Baner", link: "/x90" },
       { name: "Koregaon Park", link: "/koregaonpark" },
-      { name: "Balewadi", link: "/balewadi" },
       { name: "Daily Stays @ Wakad", link: "/wakad" },
-      { name: "Other - Pune", link: "/other-pune" },
+      { name: "Daily Stays @ Other", link: "/other-pune" },
     ],
   },
 ];

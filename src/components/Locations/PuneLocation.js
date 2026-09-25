@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import BanerCover from "../../assets/hamletcover.png";
 import KoregaonParkCover from "../../assets/koregaonparkcover.png";
-import BalewadiCover from "../../assets/Balewadi/banner1.webp";
 import WakadCover from "../../assets/Wakad/1.webp";
 
 const x90Cover = "/images/x90/x90-11.jpg";
@@ -27,13 +26,6 @@ const puneLocations = [
     roomTypes: ["Studio Rooms"],
   },
   {
-    title: "Balewadi, Pune",
-    image: BalewadiCover,
-    mapUrl: "https://maps.app.goo.gl/oeH5w6v8QWXDZKSc6",
-    href: "/balewadi",
-    roomTypes: ["Studio Rooms"],
-  },
-  {
     title: "X90, Baner Pune",
     image: x90Cover,
     mapUrl: "https://maps.google.com/maps?q=X90+Premium+Studios,+Pune",
@@ -48,7 +40,7 @@ const puneLocations = [
     roomTypes: ["Studio Rooms"],
   },
   {
-    title: "Other, Pune",
+    title: "Daily Stays @ Other, Pune",
     image: "https://pub-6d08c79af1b441ba9ae8499c407fd9d0.r2.dev/Property/other/other6.webp",
     mapUrl: "https://maps.google.com/maps?q=Pune",
     href: "/other-pune",
